@@ -73,11 +73,11 @@ export default function App() {
   //////////////// EVENT HANDLERS ////////////////
   //////////////// EVENT HANDLERS ////////////////
   const inputChange = (name, value) => {
-    // 🔥 STEP 10- RUN VALIDATION WITH YUP
+ 
     validate(name, value);
     setFormValues({
       ...formValues,
-      [name]: value // NOT AN ARRAY
+      [name]: value 
     })
   }
 
@@ -88,7 +88,7 @@ export default function App() {
     
       toppings: ['pineapple', 'beef sausage', 'anchovies', 'mushrooms'].filter(topping => !!formValues[topping])
     }
-    // 🔥 STEP 8- POST NEW FRIEND USING HELPER
+  
     postNewOrder(newOrder);
   }
 
@@ -114,14 +114,15 @@ export default function App() {
             
             </label>
           </form>
-        </Route>
-         
+        
+         </Route>
           <Form 
             values={formValues}
             change={inputChange}
             submit={formSubmit}
             errors={formErrors}
           />
+          
          </Switch>
       </div>
     </>
