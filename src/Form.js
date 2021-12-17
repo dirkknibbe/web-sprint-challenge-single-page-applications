@@ -29,7 +29,7 @@ export default function Form(props) {
           <div>{errors.name}</div>
         </div>
         
-            <label> Fill out the Order Form
+            <label > Fill out the Order Form
               <label>Name
                {/* <div>{errors.name}</div> */}
               <input
@@ -54,7 +54,7 @@ export default function Form(props) {
               </select>
               </label>
               
-               <label>Pineapple
+               <label >Pineapple
                 <input
                   type='checkbox'
                   name='pineapple'
@@ -95,6 +95,7 @@ export default function Form(props) {
                 onChange={onChange}
                 name='special'
                 type='text'
+                
               />
               <div  className='submit'><button  id='order-button' type='submit' onSubmit={onSubmit}>Add to Order</button></div>
               

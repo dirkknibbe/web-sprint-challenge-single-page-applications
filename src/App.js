@@ -58,7 +58,7 @@ export default function App() {
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
         console.log(resp.data)
-          setPizzaOrders(pizzaOrders)
+          setPizzaOrders(newOrder.target.value)
       }).catch( err => console.error(err))
         .finally(() => setFormValues(initialFormValues))
   }
