@@ -43,6 +43,7 @@ describe('Quotes App', () => {
             nameInput().type('Jeremiah');
             
             submitBtn().click()
+            submitBtn().should(console.log())
         })
         
     })

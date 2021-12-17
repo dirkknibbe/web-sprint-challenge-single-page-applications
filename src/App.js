@@ -98,19 +98,17 @@ export default function App() {
   
   return (
     <>
-      <nav>
+      
         <h1>Lambda Eats</h1>
-        <div>
+        
         <Link to='/'>Home</Link>
-        </div>
-      </nav>
-      <div>
+       
       <Switch>
         <Route exact path='/'>
-          <form id='order-pizza' >
-            <label> Get you a pie?
+          <form  >
+            <label > Get you a pie?
               
-               <Link to='/pizza'>Don't make Zzz's make ZZa's!</Link>
+               <Link id='order-pizza' to='/pizza'>Don't make Zzz's make ZZa's!</Link>
             
             </label>
           </form>
@@ -124,7 +122,7 @@ export default function App() {
           />
           
          </Switch>
-      </div>
+      
     </>
   );
 };

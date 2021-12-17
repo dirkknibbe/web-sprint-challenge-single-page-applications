@@ -24,7 +24,7 @@ export default function Form(props) {
   return (
 <Switch>
     <Route path='/pizza'>
-        <form id='pizza-form' onSubmit={onSubmit}>
+        <form id='pizza-form' >
         <div className='errors'>
           <div>{errors.name}</div>
         </div>
