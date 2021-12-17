@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
 
 import axios from 'axios';
@@ -30,7 +30,7 @@ const initialFormErrors = {
   size: '',
   
 }
-const initialPizza = []
+const initialOrder = []
 
 
 
@@ -42,7 +42,7 @@ export default function App() {
   //////////////// STATES ////////////////
   //////////////// STATES ////////////////
   //////////////// STATES ////////////////
-  const [pizzaOrders, setPizzaOrders] = useState(initialPizza)          
+  const [pizzaOrders, setPizzaOrders] = useState(initialOrder)          
   const [formValues, setFormValues] = useState(initialFormValues) 
   const [formErrors, setFormErrors] = useState(initialFormErrors) 
         
@@ -51,12 +51,14 @@ export default function App() {
   //////////////// HELPERS ////////////////
   //////////////// HELPERS ////////////////
 
+
+
   const postNewOrder = newOrder => {
     
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
-        console.log(resp)
-          
+        console.log(resp.data)
+          setPizzaOrders(pizzaOrders)
       }).catch( err => console.error(err))
         .finally(() => setFormValues(initialFormValues))
   }
@@ -80,6 +82,10 @@ export default function App() {
       [name]: value 
     })
   }
+
+  // useEffect(() => {
+  //   postNewOrder()
+  // }, [])
 
   const formSubmit = () => {
     const newOrder = {
@@ -106,21 +112,23 @@ export default function App() {
       <Switch>
         <Route exact path='/'>
           <form  >
-            <label > Get you a pie?
+            <label > 
               
                <Link id='order-pizza' to='/pizza'>Don't make Zzz's make ZZa's!</Link>
             
             </label>
           </form>
         
-         </Route>
+         </Route> 
+        
           <Form 
             values={formValues}
             change={inputChange}
             submit={formSubmit}
             errors={formErrors}
+            
           />
-          
+         
          </Switch>
       
     </>
