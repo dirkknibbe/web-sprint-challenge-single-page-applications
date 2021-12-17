@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, Route, Switch } from 'react-router-dom'
 
 import axios from 'axios';
@@ -31,7 +31,7 @@ const initialFormErrors = {
   
 }
 const initialPizza = []
-const initialDisabled = true
+
 
 
 
@@ -45,24 +45,18 @@ export default function App() {
   const [pizzaOrders, setPizzaOrders] = useState(initialPizza)          
   const [formValues, setFormValues] = useState(initialFormValues) 
   const [formErrors, setFormErrors] = useState(initialFormErrors) 
-  const [disabled, setDisabled] = useState(initialDisabled)       
+        
 
   //////////////// HELPERS ////////////////
   //////////////// HELPERS ////////////////
   //////////////// HELPERS ////////////////
-  const getOrders = () => {
-
-    axios.get('http://buddies.com/api/friends')
-      .then(resp => {
-          setPizzaOrders(resp.data)
-      }).catch(err => console.error(err))
-  }
 
   const postNewOrder = newOrder => {
     
-    axios.post('http://buddies.com/api/friends', newOrder)
+    axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
-          setPizzaOrders([ resp.data, ...pizzaOrders ]);
+        console.log(resp)
+          
       }).catch( err => console.error(err))
         .finally(() => setFormValues(initialFormValues))
   }
@@ -101,16 +95,7 @@ export default function App() {
   //////////////// SIDE EFFECTS ////////////////
   //////////////// SIDE EFFECTS ////////////////
   //////////////// SIDE EFFECTS ////////////////
-  useEffect(() => {
-    getOrders()
-  }, [])
-
-  useEffect(() => {
-    schema.isValid(formValues).then(valid => setDisabled(!valid))
-  }, [formValues])
-
-
-
+  
   return (
     <>
       <nav>
@@ -135,8 +120,7 @@ export default function App() {
             values={formValues}
             change={inputChange}
             submit={formSubmit}
-            disabled={disabled}
-        
+            errors={formErrors}
           />
          </Switch>
       </div>

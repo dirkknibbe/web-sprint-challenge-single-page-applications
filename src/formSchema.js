@@ -9,14 +9,15 @@ name: yup
 size: yup 
     .string()
     .trim(),
-
-special: yup
-    .string(),
-
+    
 pineapple: yup.boolean(),
 beefsausage: yup.boolean(),
 anchovies: yup.boolean(),
-mushrooms: yup.boolean(),   
+mushrooms: yup.boolean(),
+
+special: yup
+    .string(),
+   
 })
 
 export default formSchema;

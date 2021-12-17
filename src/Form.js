@@ -6,6 +6,7 @@ export default function Form(props) {
     values,
     submit,
     change,
+    errors,
   } = props
 
   const onSubmit = evt => {
@@ -18,19 +19,26 @@ export default function Form(props) {
     const valueToUse = type === 'checkbox' ? checked : value;
     change(name, valueToUse)
   }
+  
 
   return (
 <Switch>
     <Route path='/pizza'>
-        <form id='pizza-form' >
+        <form id='pizza-form' onSubmit={onSubmit}>
+        <div className='errors'>
+          <div>{errors.name}</div>
+        </div>
+        
             <label> Fill out the Order Form
               <label>Name
+               {/* <div>{errors.name}</div> */}
               <input
                 id='name-input'
                 value={values.name}
                 onChange={onChange}
                 name='name'
                 type='text'
+                
               />
               </label>
               <label id='size-dropdown'>Size of Za?
@@ -88,13 +96,16 @@ export default function Form(props) {
                 name='special'
                 type='text'
               />
+              <div className='submit'><button id='order-button' type='submit' onSubmit={onSubmit}>Add to Order</button></div>
+              
               </label>
+              
               </label>
               
 
               </label>
-              <button id='order-button' type='submit'>Add to Order</button>
-            </label>
+              </label>
+            
           </form>
         </Route>
       </Switch>
