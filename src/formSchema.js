@@ -9,7 +9,7 @@ name: yup
 size: yup 
     .string()
     .trim(),
-    
+
 pineapple: yup.boolean(),
 beefsausage: yup.boolean(),
 anchovies: yup.boolean(),
@@ -17,6 +17,7 @@ mushrooms: yup.boolean(),
 
 special: yup
     .string(),
+
    
 })
 

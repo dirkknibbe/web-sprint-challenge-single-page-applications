@@ -50,14 +50,21 @@ export default function App() {
   //////////////// HELPERS ////////////////
   //////////////// HELPERS ////////////////
   //////////////// HELPERS ////////////////
+// const getOrder = () => {
 
+//     axios.get('https://reqres.in/api/users')
+//       .then(resp => {
+//         console.log(resp.data.data)
+          
+//       }).catch(err => console.error(err))
+//   }
 
 
   const postNewOrder = newOrder => {
     
     axios.post('https://reqres.in/api/orders', newOrder)
       .then(resp => {
-        console.log(resp.data)
+        console.log(resp)
           setPizzaOrders(newOrder)
       }).catch( err => console.error(err))
         .finally(() => setFormValues(initialFormValues))
@@ -84,7 +91,7 @@ export default function App() {
   }
 
   // useEffect(() => {
-  //   postNewOrder()
+  //   getOrder()
   // }, [])
 
   const formSubmit = () => {
@@ -96,6 +103,7 @@ export default function App() {
     }
   
     postNewOrder(newOrder);
+    // getOrder(newOrder);
   }
 
   //////////////// SIDE EFFECTS ////////////////
